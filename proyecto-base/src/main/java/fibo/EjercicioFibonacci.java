@@ -1,56 +1,43 @@
 package fibo;
-import java.util.Scanner;
 
 public class EjercicioFibonacci {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int opcion;
-
-        do {
-            System.out.println("Menú:");
-            System.out.println("1. Generar serie de Fibonacci");
-            System.out.println("2. Salir");
-            System.out.print("Selecciona una opción: ");
-
-            opcion = scanner.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    System.out.print("Ingresa la cantidad de términos: ");
-                    int cantidad = scanner.nextInt();
-                    generarSerieFibonacci(cantidad);
-                    break;
-                case 2:
-                    System.out.println("¡Hasta la proxima!");
-                    break;
-                default:
-                    System.out.println("Opción inválida. Por favor, elige una opción válida.");
-            }
-        } while (opcion != 2);
-
-        scanner.close();
-    }
-
-    public static void generarSerieFibonacci(int cantidad) {
-        int primero = 0, segundo = 1;
-
-        System.out.print("Serie de Fibonacci de " + cantidad + " términos:");
-        for (int i = 0; i < cantidad; i++) {
-            System.out.print(" " + primero);
-            int siguiente = primero + segundo;
-            primero = segundo;
-            segundo = siguiente;
+        if (args.length != 1) {
+            System.out.println("Por favor, introduci un numero como argumento.");
+            return;
         }
 
+        int n;
+        try {
+            n = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("El argumento debe ser un numero entero.");
+            return;
+        }
+
+        long[] series = generarSerieFibonacci(n);
+        System.out.print("fibo<" + n + ">: ");
+        for (long num : series) {
+            System.out.print(num + " ");
+        }
         System.out.println();
     }
-
-    public static int fibonacci(int n) {
-        if (n <= 1) {
-            return n;
-        } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
+    public static long[] generarSerieFibonacci(int cantidadAGenerar) {
+        if (cantidadAGenerar <= 0) {
+            return new long[0];
         }
+
+        long[] series = new long[cantidadAGenerar];
+        series[0] = 0;
+        if (cantidadAGenerar > 1) {
+            series[1] = 1;
+        }
+
+        for (int i = 2; i < cantidadAGenerar; i++) {
+            series[i] = series[i - 1] + series[i - 2];
+        }
+
+        return series;
     }
 
 }
