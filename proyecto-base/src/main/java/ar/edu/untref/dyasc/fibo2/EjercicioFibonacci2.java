@@ -43,30 +43,31 @@ public class EjercicioFibonacci2 {
         for (int i = 2; i < cantidad; i++) {
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
         }
+    }
 
-        switch (input) {
+    public static void imprimirSerieFibonacci(String opcionIngresada,long[] serieFibonacci,int cantidadElementosGenerados){
+        switch (opcionIngresada) {
             case "hd":
-                for (int i = 0; i < cantidad; i++) {
-                    System.out.print(fibonacci[i] + " ");
+                for (int i = 0; i < cantidadElementosGenerados; i++) {
+                    System.out.print(serieFibonacci[i] + " ");
                 }
                 break;
             case "vd":
-                for (int i = 0; i < cantidad; i++) {
-                    System.out.println(fibonacci[i]);
+                for (int i = 0; i < cantidadElementosGenerados; i++) {
+                    System.out.println(serieFibonacci[i]);
                 }
                 break;
             case "hi":
-                for (int i = cantidad - 1; i >= 0; i--) {
-                    System.out.print(fibonacci[i] + " ");
+                for (int i = cantidadElementosGenerados - 1; i >= 0; i--) {
+                    System.out.print(serieFibonacci[i] + " ");
                 }
                 break;
             case "vi":
-                for (int i = cantidad - 1; i >= 0; i--) {
-                    System.out.println(fibonacci[i] + " ");
+                for (int i = cantidadElementosGenerados - 1; i >= 0; i--) {
+                    System.out.println(serieFibonacci[i] + " ");
                 }
                 break;
         }
-
         System.out.println(); // Imprime una línea vacía al final
     }
 }
