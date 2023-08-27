@@ -5,6 +5,8 @@ public class EjercicioFibonacci2 {
         int cantidad = 0;
         char orientacion = 'h';
         char direccion = 'd';
+        String opcionIngresada;
+        long[] serieFibonacci;
 
         if (args.length < 1) {
             System.out.println("Faltan argumentos. Uso: java EjercicioFibonacci2 [-o=<orientacion+direccion>] <cantidad>");
@@ -29,7 +31,9 @@ public class EjercicioFibonacci2 {
             return;
         }
 
-        generarSerieFibonacci(cantidad, orientacion, direccion);
+        opcionIngresada = String.valueOf(orientacion) + String.valueOf(direccion);
+        serieFibonacci = generarSerieFibonacci(cantidad);
+        imprimirSerieFibonacci(opcionIngresada,serieFibonacci,cantidad);
     }
 
 
@@ -53,6 +57,8 @@ public class EjercicioFibonacci2 {
     }
 
     public static void imprimirSerieFibonacci(String opcionIngresada,long[] serieFibonacci,int cantidadElementosGenerados){
+        System.out.println("fibo<"+cantidadElementosGenerados+">:");
+
         switch (opcionIngresada) {
             case "hd":
                 for (int i = 0; i < cantidadElementosGenerados; i++) {
