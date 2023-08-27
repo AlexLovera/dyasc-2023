@@ -32,17 +32,24 @@ public class EjercicioFibonacci2 {
         generarSerieFibonacci(cantidad, orientacion, direccion);
     }
 
-    public static void generarSerieFibonacci(int cantidad, char orientacion, char direccion) {
-        int[] fibonacci = new int[cantidad];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
-        String input = String.valueOf(orientacion) + String.valueOf(direccion);
 
-        System.out.println("fibo<"+cantidad+">:");
 
-        for (int i = 2; i < cantidad; i++) {
-            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+    public static long[] generarSerieFibonacci(int cantidadAGenerar) {
+        if (cantidadAGenerar <= 0) {
+            return new long[0];
         }
+
+        long[] series = new long[cantidadAGenerar];
+        series[0] = 0;
+        if (cantidadAGenerar > 1) {
+            series[1] = 1;
+        }
+
+        for (int i = 2; i < cantidadAGenerar; i++) {
+            series[i] = series[i - 1] + series[i - 2];
+        }
+
+        return series;
     }
 
     public static void imprimirSerieFibonacci(String opcionIngresada,long[] serieFibonacci,int cantidadElementosGenerados){
