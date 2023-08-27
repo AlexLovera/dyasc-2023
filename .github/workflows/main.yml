@@ -27,4 +27,5 @@ jobs:
       run: cd proyecto-base
 
     - name: Build with Maven
-      run: mvn -B clean install
+      working-directory: ./proyecto-base
+      run: mvn package
