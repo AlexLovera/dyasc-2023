@@ -10,6 +10,12 @@ public class SalidaArchivo implements ProovedorSalida{
 
     @Override
     public void enviar(String datos) {
+        if (rutaArchivo.endsWith(".txt")) {
+            escribirComoArchivoTexto(datos);
+        }
+    }
+
+    private void escribirComoArchivoTexto(String datos) {
         try (FileWriter archivo = new FileWriter(rutaArchivo)) {
             archivo.write(datos);
             String subcadenaHastaPuntos = datos.substring(0, datos.indexOf(':'));
