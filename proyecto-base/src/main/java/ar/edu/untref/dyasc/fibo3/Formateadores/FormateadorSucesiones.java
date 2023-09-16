@@ -9,7 +9,6 @@ public class FormateadorSucesiones implements Formateador{
         if (config.getEsInversa()) {
             serie = invertirSerie(serie);
         }
-        System.out.println(config.getEsInversa());
         if (config.getEsVertical()) {
             return formatearVerticalmente(serie);
         } else {
